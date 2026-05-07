@@ -6,6 +6,7 @@
     <RootNamespace>c_sharp_Basic</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <StartupObject>c_sharp_Basic.Do_While</StartupObject>
   </PropertyGroup>
 
 </Project>
