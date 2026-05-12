@@ -6,7 +6,7 @@
     <RootNamespace>run</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>c_sharp_Basic.IntroToClass</StartupObject>
+    <StartupObject>Inheritence2</StartupObject>
   </PropertyGroup>
 
 </Project>
