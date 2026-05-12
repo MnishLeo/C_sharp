@@ -6,7 +6,7 @@ namespace c_sharp_Basic;
 
 class Do_While
 {
-    static void Main()
+   static void Run()
     {
         string userChoice = string.Empty;
         do
@@ -21,7 +21,7 @@ class Do_While
                 Console.Write(start + " ");
                 start = start + 2;
             }
-            Console.WriteLine(); // Add a new line for better formatting
+            Console.WriteLine(); 
 
             do
             {
@@ -33,6 +33,6 @@ class Do_While
                 }
             } while (userChoice != "YES" && userChoice != "NO");
 
-        } while (userChoice == "YES"); // Fixed: Changed from userChoice != "YES" to userChoice == "YES"
+        } while (userChoice == "YES"); 
     }
 }

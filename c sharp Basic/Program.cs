@@ -1,7 +1,7 @@
 ﻿class Program
 {
 
-    static void Main()
+    static void run()
     {
         int TotalCofeeCost = 0;
     Start:
