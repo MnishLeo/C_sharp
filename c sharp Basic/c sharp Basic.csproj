@@ -5,7 +5,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>run.Polymorphism.Program</StartupObject>
+    <StartupObject>c_sharp_Basic.Polymorphism.BaseClass.MhihingVsMoverloading</StartupObject>
   </PropertyGroup>
 
 </Project>

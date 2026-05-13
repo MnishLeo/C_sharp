@@ -41,7 +41,7 @@ namespace run.Polymorphism
 
     public class Program
     {
-        public static void Main()
+        public static void run()
         {
             Employee[] employees = new Employee[4];
             employees[0] = new Employee();
