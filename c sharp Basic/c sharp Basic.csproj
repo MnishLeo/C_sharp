@@ -3,10 +3,9 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
-    <RootNamespace>run</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>Inheritence2</StartupObject>
+    <StartupObject>run.Polymorphism.Program</StartupObject>
   </PropertyGroup>
 
 </Project>
