@@ -5,7 +5,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>c_sharp_Basic.Delegate.Program</StartupObject>
+    <StartupObject>c_sharp_Basic.Delegate.Employee</StartupObject>
   </PropertyGroup>
 
 </Project>
