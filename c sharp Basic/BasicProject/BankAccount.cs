@@ -199,6 +199,129 @@ namespace BankingApp
                     break;
             }
         }
+        static void Login()
+        {
+            Console.Write("Enter Account Number: ");
+            string accountNumber = Console.ReadLine();
 
+            if (!accounts.ContainsKey(accountNumber))
+            {
+                Console.WriteLine("Account not found");
+                return;
+            }
+
+            Console.Write("Enter PIN: ");
+            string pin = Console.ReadLine();
+
+            var account = accounts[accountNumber];
+            if (account.VerifyPin(pin))
+            {
+                currentUser = account;
+                Console.WriteLine($"\nWelcome back, {currentUser.AccountHolder}!");
+            }
+            else
+            {
+                Console.WriteLine("Invalid PIN");
+            }
+        }
+
+        static void CreateAccount()
+        {
+            Console.Write("Enter your full name: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Create a 4-digit PIN: ");
+            string pin = Console.ReadLine();
+
+            if (pin.Length != 4 || !pin.All(char.IsDigit))
+            {
+                Console.WriteLine("PIN must be 4 digits");
+                return;
+            }
+
+            Console.WriteLine("Select account type:");
+            Console.WriteLine("1. Checking");
+            Console.WriteLine("2. Savings");
+            string typeChoice = Console.ReadLine();
+            string accountType = typeChoice == "1" ? "Checking" : "Savings";
+
+            Console.Write("Initial deposit amount: $");
+            decimal initialDeposit = decimal.Parse(Console.ReadLine());
+
+            var newAccount = new BankAccount(name, pin, accountType, initialDeposit);
+            accounts.Add(newAccount.AccountNumber, newAccount);
+
+            Console.WriteLine($"\nAccount created successfully!");
+            Console.WriteLine($"Your account number is: {newAccount.AccountNumber}");
+            Console.WriteLine("Please save this number for future logins");
+        }
+
+        static void ShowUserMenu()
+        {
+            Console.WriteLine($"\n=== Welcome {currentUser.AccountHolder} ===");
+            Console.WriteLine($"Balance: ${currentUser.Balance:F2}");
+            Console.WriteLine("\n1. Deposit");
+            Console.WriteLine("2. Withdraw");
+            Console.WriteLine("3. Transfer");
+            Console.WriteLine("4. View Transaction History");
+            Console.WriteLine("5. View Account Info");
+            Console.WriteLine("6. Logout");
+            Console.Write("Choose option: ");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    Console.Write("Enter amount to deposit: $");
+                    decimal depositAmount = decimal.Parse(Console.ReadLine());
+                    currentUser.Deposit(depositAmount);
+                    break;
+                case "2":
+                    Console.Write("Enter amount to withdraw: $");
+                    decimal withdrawAmount = decimal.Parse(Console.ReadLine());
+                    currentUser.Withdraw(withdrawAmount);
+                    break;
+                case "3":
+                    PerformTransfer();
+                    break;
+                case "4":
+                    currentUser.ShowTransactionHistory();
+                    break;
+                case "5":
+                    currentUser.ShowAccountInfo();
+                    break;
+                case "6":
+                    currentUser = null;
+                    Console.WriteLine("Logged out successfully");
+                    break;
+                default:
+                    Console.WriteLine("Invalid option");
+                    break;
+            }
+
+            if (choice != "6")
+            {
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+            }
+        }
+
+        static void PerformTransfer()
+        {
+            Console.Write("Enter recipient account number: ");
+            string recipientNumber = Console.ReadLine();
+
+            if (!accounts.ContainsKey(recipientNumber))
+            {
+                Console.WriteLine("Recipient account not found");
+                return;
+            }
+
+            Console.Write("Enter amount to transfer: $");
+            decimal amount = decimal.Parse(Console.ReadLine());
+
+            currentUser.Transfer(accounts[recipientNumber], amount);
+        }
     }
 }
