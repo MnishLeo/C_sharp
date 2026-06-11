@@ -128,5 +128,77 @@ namespace BankingApp
             return Pin == pin;
         }
     }
+    public class Transaction
+    {
+        public DateTime Date { get; set; }
+        public string Description { get; set; }
+        public decimal Amount { get; set; }
+        public decimal Balance { get; set; }
+    }
 
+    class Program
+    {
+        private static Dictionary<string, BankAccount> accounts = new Dictionary<string, BankAccount>();
+        private static BankAccount currentUser = null;
+
+        static void Main(string[] args)
+        {
+            Console.Title = "Banking System";
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Welcome to Simple Banking System");
+            Console.ResetColor();
+
+            // Create some demo accounts
+            CreateDemoAccounts();
+
+            bool running = true;
+            while (running)
+            {
+                if (currentUser == null)
+                {
+                    ShowMainMenu();
+                }
+                else
+                {
+                    ShowUserMenu();
+                }
+            }
+        }
+
+        static void CreateDemoAccounts()
+        {
+            var account1 = new BankAccount("John Doe", "1234", "Checking", 1000);
+            var account2 = new BankAccount("Jane Smith", "5678", "Savings", 5000);
+            accounts.Add(account1.AccountNumber, account1);
+            accounts.Add(account2.AccountNumber, account2);
+        }
+
+        static void ShowMainMenu()
+        {
+            Console.WriteLine("\n=== MAIN MENU ===");
+            Console.WriteLine("1. Login");
+            Console.WriteLine("2. Create New Account");
+            Console.WriteLine("3. Exit");
+            Console.Write("Choose an option: ");
+
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    Login();
+                    break;
+                case "2":
+                    CreateAccount();
+                    break;
+                case "3":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid option");
+                    break;
+            }
+        }
+
+    }
 }
