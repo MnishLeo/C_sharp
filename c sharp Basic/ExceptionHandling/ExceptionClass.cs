@@ -4,7 +4,7 @@ namespace c_sharp_Basic.ExceptionHandling
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void run(string[] args)
         {
             try
             {

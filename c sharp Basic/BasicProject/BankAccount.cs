@@ -141,7 +141,7 @@ namespace BankingApp
         private static Dictionary<string, BankAccount> accounts = new Dictionary<string, BankAccount>();
         private static BankAccount currentUser = null;
 
-        static void Main(string[] args)
+        static void run(string[] args)
         {
             Console.Title = "Banking System";
             Console.ForegroundColor = ConsoleColor.Cyan;
