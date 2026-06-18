@@ -6,7 +6,7 @@ namespace c_sharp_Basic.ExceptionHandling
 {
     internal class Exception2
     {
-        public static void Main(string[] args)
+        public static void run(string[] args)
         {
             try
             {
